@@ -63,13 +63,14 @@ Observação: Nem todos os recursos podem estar implementados e/ou funcionando c
   - Node.js
   - Biblioteca yarn (opcional, para gerenciar as dependências)
   - Biblioteca typescript (desenvolvimento)
-  - Biblioteca express (produção)
+  - Biblioteca express (produção, para criação do servidor)
   - Biblioteca @types/express (desenvolvimento)
-  - Biblioteca mongoose (produção)
+  - Biblioteca mongoose (produção, para manipulação do banco de dados MongoDB)
   - Biblioteca eslint (opcional, para configuração do estilo de código)
   - Biblioteca ts-node (opcional, para rodar os códigos em Typescript sem precisar realizar a build para Javascript)
   - Biblioteca nodemon (opcional, para detectar alterações no arquivo index.ts e mantê-lo rodando. precisa do ts-node)
-
+  - Biblioteca multer (produção, para upload de imagens)
+  - Biblioteca @types/multer (desenvolvimento)
 
   #### Outros
   - Em breve
