@@ -12,7 +12,7 @@ export const User = model("User", new Schema({
   },
 
   cpf:{
-    type: Number,
+    type: String,
     required: true,
   },
   senha:{

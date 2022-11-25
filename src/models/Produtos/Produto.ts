@@ -2,8 +2,9 @@ import { model, Schema } from "mongoose";
 
 export const Produto = model("Produto", new Schema({
   vendedor:{
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
+    ref: "Vendedor"
   },
 
   nome:{
@@ -13,7 +14,7 @@ export const Produto = model("Produto", new Schema({
 
   descricao:{
     type: String,
-    required: true,
+    required: false,
   },
 
   imagePath:{
@@ -27,7 +28,7 @@ export const Produto = model("Produto", new Schema({
   },
 
   ingredientes:{
-    required: true,
+    required: false,
     type: [{
       nome:{
         type: String,
@@ -47,13 +48,13 @@ export const Produto = model("Produto", new Schema({
   },
 
   categoria:{
-    type: Schema.Types.ObjectID,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: "Categoria"
   },
 
   aceitaEncomenda:{
-    type: Bool,
+    type: Boolean,
     required: true,
   },
 

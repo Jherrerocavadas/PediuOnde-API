@@ -7,13 +7,13 @@ export const Vendedor = model("Vendedor", new Schema({
   },
 
   telefone:{
-    type: Number,
+    type: String,
     required: false,
   },
 
   idUser:{
-    type: Schema.Types.ObjectID,
-    required: true
-    ref: "User"
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
   },
 }));

@@ -2,17 +2,18 @@ import { model, Schema } from "mongoose";
 
 export const Pedido = model("Pedido", new Schema({
   cliente:{
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
+    ref: "User",
   },
 
   produtos:{
     required: true,
     type: [{
       produto:{
-        type: Schema.Types.ObjectID,
+        type: Schema.Types.ObjectId,
         required: true,
-        ref: "Produto"
+        ref: "Produto",
       },
       quantidade:{
         type: Number,
@@ -29,7 +30,7 @@ export const Pedido = model("Pedido", new Schema({
   },
 
   cpfCliente:{
-    type: Number,
+    type: String,
     required: false,
   },
 
@@ -45,7 +46,11 @@ export const Pedido = model("Pedido", new Schema({
   },
 
   isEncomenda:{
-    type: Bool,
+    type: Boolean,
     required: true,
   },
+  valorTotal:{
+    type: Number,
+    required: true,
+  }
 }));
