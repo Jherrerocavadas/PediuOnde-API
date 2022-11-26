@@ -4,7 +4,7 @@ import { Categoria } from "../../models/Produtos/Categoria";
 
 export async function criarCategoria(req: Request, res:Response) {
   try{
-    const imagePath = req.file?.filename;
+    const imagePath = `uploads/categorias/${req.file?.filename}`;
 
 
     const { nome } = req.body;
