@@ -27,16 +27,27 @@ import { getMessages } from "./useCases/chat/getMessages";
 
 export const router = Router();
 
-const upload = multer({
+const uploadCategorias = multer({
   storage: multer.diskStorage({
     destination(req, file, callback){
-      callback(null, "./uploads");
+      callback(null, "./uploads/categorias");
+    },
+    filename(req, file, callback){
+      callback(null, `${req.body.nome}`);
+    },
+  })
+});
+
+const uploadProdutos = multer({
+  storage: multer.diskStorage({
+    destination(req, file, callback){
+      callback(null, "./uploads/produtos");
     },
     filename(req, file, callback){
       callback(null, `${Date.now()}-${file.originalname}`);
     },
   })
-})
+});
 
 //Criar usuário
 router.post("/users", criarConta);
@@ -51,24 +62,24 @@ router.post("/vendedores", criarVendedor);
 router.get("/vendedores", getVendedorData);
 
 //Criar categoria de produtos
-router.post("/categorias", upload.single("image"), criarCategoria);
+router.post("/categorias", uploadCategorias.single("image"), criarCategoria);
 
 //Usar pelos produtos futuramente
 //listar categoria de produtos
 router.get("/categorias", getCategorias);
 
 //Editar categoria
-router.put("/categorias", upload.single("image"), (req, res)=>{res.send("OK");});
+router.put("/categorias", uploadCategorias.single("image"), (req, res)=>{res.send("OK");});
 
 
 //Criar produto
-router.post("/produtos", upload.single("image"), criarProduto);
+router.post("/produtos", uploadProdutos.single("image"), criarProduto);
 
 //Recuperar dados do produto
 router.get("/produtos", getProdutos);
 
 //Editar dados do produto
-router.put("/produtos", upload.single("image"), (req, res)=>{res.send("OK");});
+router.put("/produtos", uploadProdutos.single("image"), (req, res)=>{res.send("OK");});
 
 //Criar pedido
 router.post("/pedidos", criarPedido);
