@@ -18,6 +18,6 @@ export const Mensagem = model("Mensagem", new Schema({
 
   horario:{
     type: Date,
-    default: Date.now,
+    default: Date,
   }
 }));
